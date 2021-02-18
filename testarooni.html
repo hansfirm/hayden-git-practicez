@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myrrh</title>
+  <h>Myrrh</h>
+  <script>
+  // Transcrypt'ed from Python, 2021-02-17 19:02:04
+  var time = {};
+  import {AssertionError, AttributeError, BaseException, DeprecationWarning, Exception, IndexError, IterableError, KeyError, NotImplementedError, RuntimeWarning, StopIteration, UserWarning, ValueError, Warning, __JsIterator__, __PyIterator__, __Terminal__, __add__, __and__, __call__, __class__, __envir__, __eq__, __floordiv__, __ge__, __get__, __getcm__, __getitem__, __getslice__, __getsm__, __gt__, __i__, __iadd__, __iand__, __idiv__, __ijsmod__, __ilshift__, __imatmul__, __imod__, __imul__, __in__, __init__, __ior__, __ipow__, __irshift__, __isub__, __ixor__, __jsUsePyNext__, __jsmod__, __k__, __kwargtrans__, __le__, __lshift__, __lt__, __matmul__, __mergefields__, __mergekwargtrans__, __mod__, __mul__, __ne__, __neg__, __nest__, __or__, __pow__, __pragma__, __proxy__, __pyUseJsNext__, __rshift__, __setitem__, __setproperty__, __setslice__, __sort__, __specialattrib__, __sub__, __super__, __t__, __terminal__, __truediv__, __withblock__, __xor__, abs, all, any, assert, bool, bytearray, bytes, callable, chr, copy, deepcopy, delattr, dict, dir, divmod, enumerate, filter, float, getattr, hasattr, input, int, isinstance, issubclass, len, list, map, max, min, object, ord, pow, print, property, py_TypeError, py_iter, py_metatype, py_next, py_reversed, py_typeof, range, repr, round, set, setattr, sorted, str, sum, tuple, zip} from './org.transcrypt.__runtime__.js';
+  import * as __module_time__ from './time.js';
+  __nest__ (time, '', __module_time__);
+  var __name__ = '__main__';
+  export var result = time.localtime ();
+  export var tm_hour = result.tm_hour;
+  if (tm_hour >= 0 && tm_hour < 12) {
+    print ("Good morning! I'm here to help determine your annual fashion footprint! Answer the questions below to see how your clothing impacts the environment and economy.");
+  }
+  else if (tm_hour >= 12 && tm_hour < 18) {
+    print ("Good afternoon! I'm going to help you determine your annual fashion footprint! Answer the questions below to see how your clothing impacts the environment and economy.");
+  }
+  else {
+    print ("Good evening! I'm going to help you determine your annual fashion footprint! Answer the questions below to see how your clothing impacts the environment and economy.");
+  }
+  export var questionNumber = 1;
+  export var wash = 0;
+  export var dry = 0;
+  export var freq = 0;
+  export var online = 0;
+  export var donate = 0;
+  export var sell = 0;
+  export var questions = function () {
+    var questionOne = function () {
+      tuple ([print (questionNumber, __kwargtrans__ ({end: ''})), print (': How often do you buy new clothes?')]);
+      print ('A:Twice per week B:Once per week C:Twice per month D:Once per month E:Every couple months F: Twice per year G:Once per year');
+      while (true) {
+        var ans = str (input ());
+        if (!__in__ (ans.lower (), tuple (['a', 'b', 'c', 'd', 'e', 'f', 'g']))) {
+          print ('Invalid Input. Please select one of the options.');
+          continue;
+        }
+        else {
+          break;
+        }
+      }
+      if (ans == 'A' || ans == 'a') {
+        freq = 104;
+      }
+      else if (ans == 'B' || ans == 'b') {
+        freq = 52;
+      }
+      else if (ans == 'C' || ans == 'c') {
+        freq = 24;
+      }
+      else if (ans == 'D' || ans == 'd') {
+        freq = 12;
+      }
+      else if (ans == 'E' || ans == 'e') {
+        freq = 6;
+      }
+      else if (ans == 'F' || ans == 'f') {
+        freq = 2;
+      }
+      else {
+        freq = 1;
+      }
+      questionNumber = questionNumber + 1;
+    };
+    questionOne ();
+    var questionTwo = function () {
+      tuple ([print (questionNumber, __kwargtrans__ ({end: ''})), print (': What fraction of your clothes do you buy online rather than in-store?')]);
+      print ('A:10% B:25% C:50% D:60% E:75% F:90% G:100%');
+      while (true) {
+        var ans = str (input ());
+        if (!__in__ (ans.lower (), tuple (['a', 'b', 'c', 'd', 'e', 'f', 'g']))) {
+          print ('Invalid Input. Please select one of the options.');
+          continue;
+        }
+        else {
+          break;
+        }
+      }
+      if (ans == 'A' || ans == 'a') {
+        online = 10;
+      }
+      else if (ans == 'B' || ans == 'b') {
+        online = 25;
+      }
+      else if (ans == 'C' || ans == 'c') {
+        online = 50;
+      }
+      else if (ans == 'D' || ans == 'd') {
+        online = 60;
+      }
+      else if (ans == 'E' || ans == 'e') {
+        online = 75;
+      }
+      else if (ans == 'F' || ans == 'f') {
+        online = 90;
+      }
+      else {
+        online = 100;
+      }
+      questionNumber = questionNumber + 1;
+    };
+    questionTwo ();
+    var questionThree = function () {
+      tuple ([print (questionNumber, __kwargtrans__ ({end: ''})), print (': What fraction of your old clothes do you donate or sell?')]);
+      print ('A:10% B:25% C:50% D:60% E:75% F:90% G:100%');
+      while (true) {
+        var ans = str (input ());
+        if (!__in__ (ans.lower (), tuple (['a', 'b', 'c', 'd', 'e', 'f', 'g']))) {
+          print ('Invalid Input. Please select one of the options.');
+          continue;
+        }
+        else {
+          break;
+        }
+      }
+      if (ans == 'A' || ans == 'a') {
+        donate = 10;
+      }
+      else if (ans == 'B' || ans == 'b') {
+        donate = 25;
+      }
+      else if (ans == 'C' || ans == 'c') {
+        donate = 50;
+      }
+      else if (ans == 'D' || ans == 'd') {
+        donate = 60;
+      }
+      else if (ans == 'E' || ans == 'e') {
+        donate = 75;
+      }
+      else if (ans == 'F' || ans == 'f') {
+        donate = 90;
+      }
+      else {
+        donate = 99;
+      }
+      questionNumber = questionNumber + 1;
+    };
+    questionThree ();
+    var questionFour = function () {
+      tuple ([print (questionNumber, __kwargtrans__ ({end: ''})), print (': How many loads of clothes do you wash per week?')]);
+      print ('A:1 B:2 C:3 D:4 E:5 F:6 G:7');
+      while (true) {
+        var ans = str (input ());
+        if (!__in__ (ans.lower (), tuple (['a', 'b', 'c', 'd', 'e', 'f', 'g']))) {
+          print ('Invalid Input. Please select one of the options.');
+          continue;
+        }
+        else {
+          break;
+        }
+      }
+      if (ans == 'A' || ans == 'a') {
+        wash = 1;
+      }
+      else if (ans == 'B' || ans == 'b') {
+        wash = 2;
+      }
+      else if (ans == 'C' || ans == 'c') {
+        wash = 3;
+      }
+      else if (ans == 'D' || ans == 'd') {
+        wash = 4;
+      }
+      else if (ans == 'E' || ans == 'e') {
+        wash = 5;
+      }
+      else if (ans == 'F' || ans == 'f') {
+        wash = 6;
+      }
+      else {
+        wash = 7;
+      }
+      questionNumber = questionNumber + 1;
+    };
+    questionFour ();
+    var questionFive = function () {
+      tuple ([print (questionNumber, __kwargtrans__ ({end: ''})), print (': How many times do you run the tumbledryer per week?')]);
+      print ('A:1 B:2 C:3 D:4 E:5 F:6 G:7');
+      while (true) {
+        var ans = str (input ());
+        if (!__in__ (ans.lower (), tuple (['a', 'b', 'c', 'd', 'e', 'f', 'g']))) {
+          print ('Invalid Input. Please select one of the options.');
+          continue;
+        }
+        else {
+          break;
+        }
+      }
+      if (ans == 'A' || ans == 'a') {
+        dry = 1;
+      }
+      else if (ans == 'B' || ans == 'b') {
+        dry = 2;
+      }
+      else if (ans == 'C' || ans == 'c') {
+        dry = 3;
+      }
+      else if (ans == 'D' || ans == 'd') {
+        dry = 4;
+      }
+      else if (ans == 'E' || ans == 'e') {
+        dry = 5;
+      }
+      else if (ans == 'F' || ans == 'f') {
+        dry = 6;
+      }
+      else {
+        dry = 7;
+      }
+      questionNumber = questionNumber + 1;
+    };
+    questionFive ();
+    var questionSix = function () {
+      print ('Wow â€“ You are truly a fashion icon!');
+      time.sleep (1);
+      print ('Are you ready for your results?');
+      time.sleep (1);
+      print ('Y:Yes N:No');
+      while (true) {
+        var ans = str (input ());
+        if (!__in__ (ans.lower (), 'y')) {
+          print ('Select another option.');
+          continue;
+        }
+        else {
+          break;
+        }
+      }
+      questionNumber = questionNumber + 1;
+    };
+    questionSix ();
+  };
+  questions ();
+  print ("Bet! I'm on it");
+  time.sleep (0.5);
+  tuple ([print ('.', __kwargtrans__ ({end: ' '})), time.sleep (0.2), print ('.', __kwargtrans__ ({end: ' '})), time.sleep (0.2), print ('.')]);
+  time.sleep (0.5);
+  print ('Finding fashion industry facts');
+  time.sleep (0.5);
+  tuple ([print ('.', __kwargtrans__ ({end: ' '})), time.sleep (0.5), print ('.', __kwargtrans__ ({end: ' '})), time.sleep (0.5), print ('.')]);
+  time.sleep (0.5);
+  print ('Plugging in your fashion habits');
+  time.sleep (0.6);
+  tuple ([print ('.', __kwargtrans__ ({end: ' '})), time.sleep (0.6), print ('.', __kwargtrans__ ({end: ' '})), time.sleep (0.6), print ('.')]);
+  time.sleep (0.5);
+  print ('Crunching the numbers');
+  time.sleep (0.7);
+  tuple ([print ('.', __kwargtrans__ ({end: ' '})), time.sleep (0.7), print ('.', __kwargtrans__ ({end: ' '})), time.sleep (0.7), print ('.')]);
+  time.sleep (1.5);
+  print ("Here's what I calculated:");
+  time.sleep (1);
+  tuple ([print ('Your yearly wardrobe costs an estimated $', __kwargtrans__ ({end: ''})), print (freq * 25)]);
+  time.sleep (2);
+  print ('More than', freq * 4, 'different garment workers make the clothes you buy every year, but an estimated', round ((freq * 4) * 0.93), 'of those workers are not paid a living wage.');
+  time.sleep (2);
+  print ('With all the money you spend every year, you could purchase approximately', round ((freq * 25) / (25 * 1.5)), 'articles of sustainable clothing instead â€“ while simultaneously supporting small businesses!');
+  time.sleep (2);
+  tuple ([print ("But that's just the economic side of it", __kwargtrans__ ({end: ''})), time.sleep (0.6), print ('.', __kwargtrans__ ({end: ''})), time.sleep (0.3), print ('.', __kwargtrans__ ({end: ''})), time.sleep (0.3), print ('.')]);
+  time.sleep (2);
+  print ('Animals are exploited for wool, leather, fur, and down.');
+  print ('Although the data is not transparent, an estimated', round ((freq * 1215450000) / 121500400400), 'animals are used in your annual clothes cycle, while another', round ((freq * 7240267000) / 121500400400), 'are killed.');
+  
+  //# sourceMappingURL=conversion.map
+
+</script>
+</head>
+<body>
+  <p> yurd meh </p>
+</body>
+</html>
