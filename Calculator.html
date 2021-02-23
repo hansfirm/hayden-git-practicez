@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href = './main.css' type='text/css' rel='stylesheet'
+  <link href = './main.css' type='text/css' rel='stylesheet'>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Fashion Footprint Calculator</title>
   <h1>Fashion Footprint Calculator</h1>
-  <h4>Good <var id='tiempo'></var>! I'm here to help determine your annual fashion footprint! Answer the questions below to see how your clothing impacts the environment and economy. </h4>
+  <h4>Good <span id='tiempo'></span>! I'm here to help determine your annual fashion footprint! Answer the questions below to see how your clothing impacts the environment and economy. </h4>
+
+  <div class="slidecontainer">
+    <p>2. What fraction of your clothes do you buy online rather than in-store?</p>
+    <input type="range" min="1" max="100" value="0" id="onlineRange" class="row"> 
+    <p class="row"><span id="online"></span>%</p>
+    
+    <p>3. What fraction of your old clothes do you donate or sell?"</p>
+    <input type="range" min="1" max="100" value="0" id="donatesellRange" class="row"> 
+    <p class="row"><span id="donatesell"></span>%</p>
+
   <script>
 var horas = new Date().getHours();
 if (horas >= 0 && horas < 12)
@@ -18,7 +28,6 @@ else if (horas >= 12 && horas < 18)
 else 
     {var relativeTime = "evening";}
     document.getElementById("tiempo").innerHTML = relativeTime;
-    document.getElementById("tiempo").style.fontStyle = "normal";
 
 var questionNumber = 1
 var wash = 0
@@ -31,6 +40,19 @@ var cheap = 0
 var expensive = 0
 var ff = 0
 
+var slider = document.getElementById("onlineRange");
+var output = document.getElementById("online");
+output.innerHTML = slider.value;
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+var slider2 = document.getElementById("donatesellRange");
+var output2 = document.getElementById("donatesell");
+output.innerHTML = slider.value;
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
   </script>
 
 
