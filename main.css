@@ -1,7 +1,3 @@
-h1 {
-  color: red;
-}
-
 
 /* Begin slide bar styling */
 .slidecontainer {
@@ -40,4 +36,36 @@ h1 {
 }
 .row {
     display: inline-block;
+}
+h1 {
+  font-family: "Andale Mono", monospace;
+  font-weight: normal;
+}
+#introSlide {
+  text-align: center;
+}
+#creditsLeft{
+  text-align: left;
+}
+#creditsRight{
+  text-align: right;
+}
+.button{
+  color: white;
+  padding:.7rem 1.5rem;
+  background:#000;-webkit-box-shadow:0 8px 32px 0 rgba(0,0,0,0.35);box-shadow:0 8px 32px 0 rgba(0,0,0,0.35);
+  border-radius:10px;
+}
+#credits {
+  width: 100%;
+  background-image: url('https://images.theconversation.com/files/293774/original/file-20190924-54793-157i3zo.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop'); height:100px; background-position:bottom;
+}
+
+#credits div {
+  width: 49%;
+  display: inline-block;
+}
+
+#creditsRight {
+  text-align: right;
 }
