@@ -15,15 +15,15 @@
   <div>
     <form>
       <p class='row'>1. How often do you buy new clothes?</p>
-      <select name = "dropdown" class ='row'>
-        <option value = "select" selected>--Select--</option>
-         <option value = "2xW">Twice a week.</option>
-         <option value = "1xW">Once a week.</option>
-         <option value = "2xM">Twice a month.</option> 
-         <option value = "1xM">Once a month.</option>
-         <option value = "1x2M">Every couple months.</option>
-         <option value = "2xY">Twice a year.</option>
-         <option value = "1xY">Once a year.</option>
+      <select name = "dropdown" class ='row' id="freq">
+        <option value = "">--Select--</option>
+         <option value = "104">Twice a week.</option>
+         <option value = "52">Once a week.</option>
+         <option value = "24">Twice a month.</option> 
+         <option value = "12">Once a month.</option>
+         <option value = "6">Every couple months.</option>
+         <option value = "2">Twice a year.</option>
+         <option value = "1">Once a year.</option>
       </select>
     </form>
   </div>
@@ -118,6 +118,41 @@
     </form>
   </div>
 
+
+<div id="ready">
+  <p>Wow – You are truly a fashion icon!</p>
+  <p>Are you ready for your results?</p>
+</div>
+
+<div id="compileResults">
+  <p>Bet! I'm on it...</p>
+  <p>Finding fashion industry facts...</p>
+  <p>Plugging in your fashion habits...</p>
+  <p>Crunching the numbers...</p>
+</div>
+
+<div id="results">
+  <h3>Here's what I calculated:</h3>
+  <p>Your yearly wardrobe costs an estimated $<span id="cost"></span>.</p>
+  <p>More than <span id="workers"></span> different garment workers make the clothes you buy every year, but an estimated <span id="underpaidWorkers"></span> those workers are not paid a living wage.</p>
+  <p>With all the money you spend every year, you could purchase approximately <span id="smallBiz"></span> articles of sustainable clothing instead – while simultaneously supporting smaller businesses!</p>
+  <br>
+  <h3>But that's just the economic side of it...</h3>
+  <p>The fashion industry hurts animals, too. They are exploited for wool, leather, fur, silk and down.</p>
+  <p>Although the data is not transparent, an estimated <span id="animalsHurt"></span> <span id="animalVerbage"></span> used or killed for your clothes annually.</p>
+  <h3>Fashion manufacturing also takes a toll on the environment...</h3>
+  <p>Your annual clothing:</p>
+  <ul>
+    <li>emits <span id="carbon"></span> UNITS of CO2.</li>
+    <li>uses <span id="water"></span> gallons of water.</li>
+    <li>occupies <span id="land"></span> acres of land.</li>
+    <li>takes <span id="electricity"></span> of electricty.</li>
+    <li>leaks <span id="dyes"></span> tons of toxic dyes.</li>
+    <li>dumps <span id="pollution"></span> lbs. of pollution.</li>
+  </ul>
+  
+</div>
+
   <script>
 var horas = new Date().getHours();
 if (horas >= 0 && horas < 12)
@@ -152,6 +187,55 @@ output2.innerHTML = slider.value;
 slider2.oninput = function() {
   output2.innerHTML = this.value;
 }
+
+const selectElement = document.querySelector('#freq');
+selectElement.addEventListener('change', (event) => {
+  var freq = document.querySelector('#freq').value;
+  var cost = freq*25;
+  var workers = freq*4;
+  var underpaidWorkers = workers*0.93;
+  var smallBiz = freq/1.5;
+  var used = 1215450000;
+  var killed = 7240267000;
+  var totalAn = 121500000000;
+  var animalsUsed = (freq*used)/totalAn;
+  var animalsKilled = (freq*killed)/totalAn;
+  var animalsHurt = Math.round(animalsUsed) + Math.round(animalsKilled) +1;
+  document.getElementById("cost").innerHTML = cost;
+  document.getElementById("workers").innerHTML = workers;
+  document.getElementById("underpaidWorkers").innerHTML = Math.round(underpaidWorkers);
+  document.getElementById("smallBiz").innerHTML = Math.round(smallBiz);
+  document.getElementById("animalsHurt").innerHTML = animalsHurt;
+
+
+if (animalsHurt > 1) 
+  {var animalVerbage = "animals were";}
+else
+  {var animalVerbage = "animal was";}
+document.getElementById("animalVerbage").innerHTML = animalVerbage;
+
+});
+
+
+
+
+/*const selectElement = document.querySelector('#freq');
+selectElement.addEventListener('change', (event) => {
+  const cost = document.querySelector('#cost');
+  cost.textContent = `Your yearly wardrobe costs an estimated $${event.target.value*25}`;
+  const workers = document.querySelector('#workers');
+  workers.textContent = `More than ${event.target.value*4} make the clothes you buy every year, but an estimated ${Math.round(event.target.value(4*0.93))} of those workers are not paid a living wage.`;
+});
+
+const selectElement2 = document.querySelector('#freq');
+selectElement2.addEventListener('change', (event) => {
+  const workers = document.querySelector('#workers');
+  workers.textContent = `More than ${event.target.value*4} make the clothes you buy every year, but an estimated ${Math.round(event.target.value(4*0.93))} of those workers are not paid a living wage.`;
+});*/
+
+
+
+
   </script>
 
   
