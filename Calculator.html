@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   <link href = './main.css' type='text/css' rel='stylesheet'>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +31,7 @@
 
   <div>
     <p>2. What brands or shops do you buy from? (Select all that apply)</p>
-    <form action="/action_page.php">
+    <form id = "brands" action="/action_page.php">
       <input type="checkbox" id="vehicle1" name="vehicle1" value="Adidas">
       <label for="vehicle1">Adidas</label>
       <input type="checkbox" id="vehicle2" name="vehicle2" value="Calvin Klein">
@@ -55,8 +56,8 @@
       <label for="vehicle11">Patagonia</label>
       <input type="checkbox" id="vehicle12" name="vehicle12" value="Shein">
       <label for="vehicle12">Shein</label>
-      <input type="checkbox" id="vehicle13" name="vehicle13" value="Under Armour">
-      <label for="vehicle13">Under Armour</label>
+      <input type="checkbox" id="vehicle13" name="vehicle13" value="Ralph Lauren">
+      <label for="vehicle13">Ralph Lauren </label>
       <input type="checkbox" id="vehicle14" name="vehicle14" value="Zara">
       <label for="vehicle14">Zara</label>
       <input type="checkbox" id="vehicle15" name="vehicle15" value="Old Navy">
@@ -64,14 +65,15 @@
     </form>
   </div>
 
-  <div class="slidecontainer">
+  <div class="slideContainer1">
     <p>3. What fraction of your clothes do you buy online rather than in-store?</p>
-    <input type="range" min="1" max="100" value="0" id="onlineRange" class="row"> 
+    <input type="range" min="0" max="100" value="0" id="onlineRange" class="row" onInput="nothing"> 
     <p class="row"><span id="online"></span>%</p>
-  
+  </div>
+  <div id="slideContainer2">
     <p>4. What fraction of your old clothes do you donate or sell?"</p>
-    <input type="range" min="1" max="100" value="0" id="donatesellRange" class="row"> 
-    <p class="row"><span id="donatesell"></span>%</p>
+    <input type="range" min="0" max="100" value="0" id="donateSellRange" class="row" onInput="something"> 
+    <p class="row"><span id="donateSell"></span>%</p>
   </div>
 
   <div>
@@ -105,16 +107,16 @@
   <div>
     <p>7. If you buy from fast-fashion brands (e.g., Zara, Shein, H&M, Fashion Nova, etc.), what is your motivation? (Select all that apply)</p>
     <form action="/action_page.php">
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Price">
-      <label for="vehicle1">Price</label>
-      <input type="checkbox" id="vehicle2" name="vehicle2" value="Speed/Availability">
-      <label for="vehicle2">Speed/Availability</label>
-      <input type="checkbox" id="vehicle3" name="vehicle3" value="Corporate Advertisements">
-      <label for="vehicle3">Corporate Advertisements</label>
-      <input type="checkbox" id="vehicle4" name="vehicle4" value="Social Media and Influencers">
-      <label for="vehicle4">Social Media/Influencers</label>
-      <input type="checkbox" id="vehicle5" name="vehicle5" value="Specific Events or Costumes">
-      <label for="vehicle5">Specific Events/Costumes</label>
+      <input type="checkbox" id="vehicle16" name="vehicle16" value="Price">
+      <label for="vehicle16">Price</label>
+      <input type="checkbox" id="vehicle17" name="vehicle17" value="Speed/Availability">
+      <label for="vehicle17">Speed/Availability</label>
+      <input type="checkbox" id="vehicle18" name="vehicle18" value="Corporate Advertisements">
+      <label for="vehicle18">Corporate Advertisements</label>
+      <input type="checkbox" id="vehicle19" name="vehicle19" value="Social Media and Influencers">
+      <label for="vehicle19">Social Media/Influencers</label>
+      <input type="checkbox" id="vehicle20" name="vehicle5" value="Specific Events or Costumes">
+      <label for="vehicle20">Specific Events/Costumes</label>
     </form>
   </div>
 
@@ -133,7 +135,7 @@
 
 <div id="results">
   <h3>Here's what I calculated:</h3>
-  <p>Your yearly wardrobe costs an estimated $<span id="cost"></span>.</p>
+  <p>Your yearly wardrobe costs an estimated $<span id="yearlyCost"></span>.</p>
   <p>More than <span id="workers"></span> different garment workers make the clothes you buy every year, but an estimated <span id="underpaidWorkers"></span> those workers are not paid a living wage.</p>
   <p>With all the money you spend every year, you could purchase approximately <span id="smallBiz"></span> articles of sustainable clothing instead – while simultaneously supporting smaller businesses!</p>
   <br>
@@ -167,9 +169,7 @@ var questionNumber = 1
 var wash = 0
 var dry = 0
 var freq = 0
-var online = 0
 var donate = 0
-var sell = 0
 var cheap = 0
 var expensive = 0
 var ff = 0
@@ -181,31 +181,133 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 
-var slider2 = document.getElementById("donatesellRange");
-var output2 = document.getElementById("donatesell");
-output2.innerHTML = slider.value;
+var slider2 = document.getElementById("donateSellRange");
+var output2 = document.getElementById("donateSell");
+output2.innerHTML = slider2.value;
 slider2.oninput = function() {
   output2.innerHTML = this.value;
 }
 
+var online = 0;
+
+$("#onlineRange").on("input",function(){
+    online = Number($(this).val());
+    console.log(online);
+    console.log(typeof online);
+});
+
+var sell = 0; 
+
+$("#donateSellRange").on("input",function(){
+    sell = Number($(this).val());
+    console.log(sell);
+    console.log(typeof sell);
+});
+
+
+
+
+
+const selectElement2 = document.querySelector('#brands');
+selectElement2.addEventListener('change', (event) => {
+
+var regular = 1
+var expensive = 1
+var ff = 1
+
+if (document.getElementById("vehicle1").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle2").checked == true)
+  {var expensive = expensive+1;}
+else
+  {var expensive = expensive;}
+if (document.getElementById("vehicle3").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle4").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle5").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle6").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle7").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle8").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle9").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle10").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle11").checked == true)
+  {var expensive = expensive+1;}
+else
+  {var expensive = expensive;}
+if (document.getElementById("vehicle12").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle13").checked == true)
+  {var expensive = expensive+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle14").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle15").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+
+/*const selectElement3 = document.querySelector('#donateSell');
+selectElement3.addEventListener('change', (event) => {
+var slider2 = document.getElementById("donateSellRange");
+var output2 = document.getElementById("donateSell");
+output2.innerHTML = slider.value;
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+  var sell = output2;
+}
+console.log(sell)
+});*/
+
 const selectElement = document.querySelector('#freq');
 selectElement.addEventListener('change', (event) => {
-  var freq = document.querySelector('#freq').value;
-  var cost = freq*25;
-  var workers = freq*4;
-  var underpaidWorkers = workers*0.93;
-  var smallBiz = freq/1.5;
-  var used = 1215450000;
-  var killed = 7240267000;
-  var totalAn = 121500000000;
-  var animalsUsed = (freq*used)/totalAn;
-  var animalsKilled = (freq*killed)/totalAn;
-  var animalsHurt = Math.round(animalsUsed) + Math.round(animalsKilled) +1;
-  document.getElementById("cost").innerHTML = cost;
-  document.getElementById("workers").innerHTML = workers;
-  document.getElementById("underpaidWorkers").innerHTML = Math.round(underpaidWorkers);
-  document.getElementById("smallBiz").innerHTML = Math.round(smallBiz);
-  document.getElementById("animalsHurt").innerHTML = animalsHurt;
+var freq = document.querySelector('#freq').value;
+var cost = (freq*25)*(expensive/(regular+(2*ff)));
+var sellReimbursement = (sell*.01)*(cost)*(0.09)
+var yearlyCost = cost - sellReimbursement;
+var workers = freq*4;
+var underpaidWorkers = workers*0.93;
+var smallBiz = freq/1.5;
+var used = 1215450000;
+var killed = 7240267000;
+var totalAn = 121500000000;
+var animalsUsed = (freq*used)/totalAn;
+var animalsKilled = (freq*killed)/totalAn;
+var animalsHurt = Math.round(animalsUsed) + Math.round(animalsKilled) +1;
+document.getElementById("yearlyCost").innerHTML = Math.round(yearlyCost);
+document.getElementById("workers").innerHTML = workers;
+document.getElementById("underpaidWorkers").innerHTML = Math.round(underpaidWorkers);
+document.getElementById("smallBiz").innerHTML = Math.round(smallBiz);
+document.getElementById("animalsHurt").innerHTML = animalsHurt;
 
 
 if (animalsHurt > 1) 
@@ -215,6 +317,11 @@ else
 document.getElementById("animalVerbage").innerHTML = animalVerbage;
 
 });
+
+
+
+});
+
 
 
 
