@@ -16,7 +16,7 @@
   <div>
     <form>
       <p class='row'>1. How often do you buy new clothes?</p>
-      <select name = "dropdown" class ='row' id="freq">
+      <select name = "dropdown" class ='row' id="freq" onInput="" value="0">
         <option value = "">--Select--</option>
          <option value = "104">Twice a week.</option>
          <option value = "52">Once a week.</option>
@@ -122,7 +122,7 @@
 
 
 <div id="ready">
-  <p>Wow – You are truly a fashion icon!</p>
+  <p>Wow – You're truly a fashion icon!</p>
   <p>Are you ready for your results?</p>
 </div>
 
@@ -135,7 +135,7 @@
 
 <div id="results">
   <h3>Here's what I calculated:</h3>
-  <p>Your yearly wardrobe costs an estimated $<span id="yearlyCost"></span>.</p>
+  <p>Your yearly wardrobe costs an estimated $<span id="yearlyCost" onInput=""></span>.</p>
   <p>More than <span id="workers"></span> different garment workers make the clothes you buy every year, but an estimated <span id="underpaidWorkers"></span> those workers are not paid a living wage.</p>
   <p>With all the money you spend every year, you could purchase approximately <span id="smallBiz"></span> articles of sustainable clothing instead – while simultaneously supporting smaller businesses!</p>
   <br>
@@ -188,10 +188,20 @@ slider2.oninput = function() {
   output2.innerHTML = this.value;
 }
 
+
+var freq = 0;
+
+$("#freq").on("input",function(){
+    freq = Number($(this).val());
+    console.log(freq);
+    console.log(typeof freq);
+});
+
+
 var online = 0;
 
-$("#onlineRange").on("input",function(){
-    online = Number($(this).val());
+$("#onlineRange").on("input",function() {
+    var online = Number($(this).val());
     console.log(online);
     console.log(typeof online);
 });
@@ -199,16 +209,115 @@ $("#onlineRange").on("input",function(){
 var sell = 0; 
 
 $("#donateSellRange").on("input",function(){
-    sell = Number($(this).val());
+    var sell = Number($(this).val());
     console.log(sell);
     console.log(typeof sell);
 });
 
 
+var regular = 1
+var expensive = 1
+var ff = 1
+
+$("#brands").on("input",function(){
+var regular = 1
+var expensive = 1
+var ff = 1
+
+if (document.getElementById("vehicle1").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle2").checked == true)
+  {var expensive = expensive+1;}
+else
+  {var expensive = expensive;}
+if (document.getElementById("vehicle3").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle4").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle5").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle6").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle7").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle8").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle9").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle10").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle11").checked == true)
+  {var expensive = expensive+1;}
+else
+  {var expensive = expensive;}
+if (document.getElementById("vehicle12").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle13").checked == true)
+  {var expensive = expensive+1;}
+else
+  {var regular = regular;}
+if (document.getElementById("vehicle14").checked == true)
+  {var ff = ff+1;}
+else
+  {var ff = ff;}
+if (document.getElementById("vehicle15").checked == true)
+  {var regular = regular+1;}
+else
+  {var regular = regular;}
+console.log(ff);
+console.log(expensive);
+console.log(regular);
+});
 
 
 
-const selectElement2 = document.querySelector('#brands');
+var cost = (freq*25)*(expensive/(regular+(2*ff)));
+var sellReimbursement = (sell*.01)*(cost)*(0.09)
+var yearlyCost = cost - sellReimbursement;
+var workers = freq*4;
+var underpaidWorkers = workers*0.93;
+var smallBiz = freq/1.5;
+var used = 1215450000;
+var killed = 7240267000;
+var totalAn = 121500000000;
+var animalsUsed = (freq*used)/totalAn;
+var animalsKilled = (freq*killed)/totalAn;
+var animalsHurt = Math.round(animalsUsed) + Math.round(animalsKilled) +1;
+document.getElementById("yearlyCost").innerHTML = Math.round(yearlyCost);
+document.getElementById("workers").innerHTML = workers;
+document.getElementById("underpaidWorkers").innerHTML = Math.round(underpaidWorkers);
+document.getElementById("smallBiz").innerHTML = Math.round(smallBiz);
+document.getElementById("animalsHurt").innerHTML = animalsHurt;
+
+
+if (animalsHurt > 1) 
+  {var animalVerbage = "animals were";}
+else
+  {var animalVerbage = "animal was";}
+document.getElementById("animalVerbage").innerHTML = animalVerbage; 
+
+
+/*const selectElement2 = document.querySelector('#brands');
 selectElement2.addEventListener('change', (event) => {
 
 var regular = 1
@@ -287,7 +396,7 @@ slider2.oninput = function() {
 }
 console.log(sell)
 });*/
-
+/*
 const selectElement = document.querySelector('#freq');
 selectElement.addEventListener('change', (event) => {
 var freq = document.querySelector('#freq').value;
@@ -322,8 +431,7 @@ document.getElementById("animalVerbage").innerHTML = animalVerbage;
 
 });
 
-
-
+*/
 
 
 /*const selectElement = document.querySelector('#freq');
